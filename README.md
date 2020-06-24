@@ -2,7 +2,7 @@
 
 ## Usage
 
-1. [Download](https://github.com/petejkim/ResetColorProfileAfterWake/releases/download/1.0/ResetColorProfileAfterWake.zip)
+1. [Download](https://github.com/petejkim/ResetColorProfileAfterWake/releases/download/1.1/ResetColorProfileAfterWake-1.1.zip)
 the app and unzip the file. Alternatively, you can build the app from source
 with Xcode.
 2. Move `ResetColorProfileAfterWake` application to a directory of your choice,
