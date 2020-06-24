@@ -19,10 +19,16 @@ CGDisplayCount const maxDisplays = 8;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
-            selector: @selector(receiveWakeNote:)
-            name: NSWorkspaceDidWakeNotification object: NULL];
+        selector: @selector(receiveWakeNote:)
+        name: NSWorkspaceDidWakeNotification
+        object: nil
+    ];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver: self
+        selector: @selector(receiveWakeNote:)
+        name: @"com.apple.screenIsUnlocked"
+        object: nil
+    ];
 }
-
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
@@ -52,7 +58,7 @@ CGDisplayCount const maxDisplays = 8;
         
         // Temporarily set to sRGB profile
         ColorSyncDeviceSetCustomProfiles(kColorSyncDisplayDeviceClass, displayUUID, (CFDictionaryRef)@{
-            (__bridge NSString *)kColorSyncDeviceDefaultProfileID: [NSURL fileURLWithPath:@"/System/Library/ColorSync/Profiles/sRGB Profile.icc"],
+            (__bridge NSString *)kColorSyncDeviceDefaultProfileID: [NSURL fileURLWithPath: @"/System/Library/ColorSync/Profiles/sRGB Profile.icc"],
         });
         
         // Restore original profile
